@@ -53,6 +53,11 @@ export default function TodoUpdate() {
           value={new Date().toISOString()}
         />
       </Form>
+      <Form method='get' action={`/todo/${todo.id}`}>
+        <Button type="submit" className='w-full bg-zinc-500 hover:bg-zinc-600 text-white mt-6'>
+          cancel
+        </Button>
+      </Form>
     </div>
   );
 }

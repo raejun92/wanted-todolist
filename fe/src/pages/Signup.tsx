@@ -26,7 +26,10 @@ export default function Signup() {
   };
 
   // Confirm password validation
-  const validateConfirmPassword = (password: string, confirmPassword: string) => {
+  const validateConfirmPassword = (
+    password: string,
+    confirmPassword: string
+  ) => {
     setIsPasswordMatch(password === confirmPassword);
   };
 
@@ -82,7 +85,10 @@ export default function Signup() {
           )}
         </div>
         <div>
-          <Label htmlFor="confirmPassword" className="block text-sm font-medium">
+          <Label
+            htmlFor="confirmPassword"
+            className="block text-sm font-medium"
+          >
             Confirm Password:
           </Label>
           <Input
@@ -96,12 +102,12 @@ export default function Signup() {
               validateConfirmPassword(password, e.target.value);
             }}
             required
-            className={!isPasswordMatch && confirmPassword ? 'border-red-500' : ''}
+            className={
+              !isPasswordMatch && confirmPassword ? 'border-red-500' : ''
+            }
           />
           {!isPasswordMatch && confirmPassword && (
-            <p className="text-red-500 text-sm mt-1">
-              Passwords do not match.
-            </p>
+            <p className="text-red-500 text-sm mt-1">Passwords do not match.</p>
           )}
         </div>
         <Button

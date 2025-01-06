@@ -6,12 +6,12 @@ interface AuthProvider {
 
 export const authProvider: AuthProvider = {
   get isAuthenticated() {
-    return !!localStorage.getItem("authToken");
+    return !!localStorage.getItem('authToken');
   },
   async signin(token: string) {
-    localStorage.setItem("authToken", token);
+    localStorage.setItem('authToken', token);
   },
   async signout() {
-    localStorage.removeItem("authToken");
+    localStorage.removeItem('authToken');
   },
 };

@@ -1,9 +1,17 @@
 import { createBrowserRouter, redirect } from "react-router";
+import { authProvider } from './auth';
+import todoCreateAction from './features/todo/create/TodoCreate.action';
+import TodoCreate from './features/todo/create/TodoCreate.ui';
+import todoDetailLoader from './features/todo/detail/TodoDetail.loader';
+import TodoDetail from './features/todo/detail';
+import { todoListLoader } from './features/todo/list/TodoList.loader';
 import Signin from "./pages/Signin";
 import Signup from './pages/Signup';
-import { authProvider } from './auth';
 import Todo from './pages/Todo';
 import apiClient from './shared/lib/axios';
+import TodoDeleteAction from './features/todo/delete/TodoDelete.action';
+import TodoUpdate from './features/todo/update';
+import TodoUpdateAction from './features/todo/update/TodoUpdate.action';
 
 const router = createBrowserRouter([
   {
@@ -13,22 +21,47 @@ const router = createBrowserRouter([
       {
         index: true,
         loader: authLoader,
-        action: signinAction,
-        Component: Signin
+        Component: Signin,
+        action: signinAction
       },
       {
         path: 'signup',
         loader: authLoader,
-        action: signupAction,
-        Component: Signup
+        Component: Signup,
+        action: signupAction
       },
-      {
-        path: 'todo',
-        loader: protectedLoader,
-        Component: Todo
-      }
+      
     ]
   },
+  {
+    path: '/todo',
+    loader: todoListLoader,
+    Component: Todo,
+    children: [
+      {
+        path: 'create',
+        Component: TodoCreate,
+        action: todoCreateAction
+      },
+      {
+        path: ':id',
+        loader: todoDetailLoader,
+        Component: TodoDetail,
+        children: [
+          {
+            path: 'delete', 
+            action: TodoDeleteAction
+          }
+        ]
+      },
+      {
+        path: 'update/:id',
+        loader: todoDetailLoader,
+        Component: TodoUpdate,
+        action: TodoUpdateAction
+      }
+    ]
+  }
 ]);
 
 export default router;
@@ -41,15 +74,7 @@ function authLoader() {
   return null;
 }
 
-function protectedLoader() {
-  if (!authProvider.isAuthenticated) {
-    return redirect('/');
-  }
-
-  return null;
-}
-
-export async function signinAction({ request }: { request: Request }) {
+async function signinAction({ request }: { request: Request }) {
   const formData = await request.formData();
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
@@ -72,7 +97,7 @@ export async function signinAction({ request }: { request: Request }) {
   }
 }
 
-export async function signupAction({request}: {request: Request}) {
+async function signupAction({request}: {request: Request}) {
   const formData = await request.formData();
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;

@@ -1,4 +1,4 @@
-import { authService } from '@/entities/auth/auth.model';
+import { authService } from '@/entities/auth/model';
 import apiClient from '@/shared/lib/axios';
 import { redirect } from 'react-router';
 

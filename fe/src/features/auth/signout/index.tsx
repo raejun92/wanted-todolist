@@ -1,4 +1,4 @@
-import { authService } from '@/entities/auth/auth.model';
+import { authService } from '@/entities/auth/model';
 import { Button } from '@/shared/components/ui/button';
 import { useNavigate } from 'react-router';
 

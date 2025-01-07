@@ -119,7 +119,6 @@ export default function Signup() {
         </Button>
       </Form>
 
-      {/* Action Data에서 에러 메시지 표시 */}
       {actionData?.error && (
         <p className="text-red-500 text-center mt-4">{actionData.error}</p>
       )}

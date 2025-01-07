@@ -1,4 +1,4 @@
-import { TodoSchema } from '@/entities/todo/todo.model';
+import { TodoSchema } from '@/entities/todo/model';
 import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label';

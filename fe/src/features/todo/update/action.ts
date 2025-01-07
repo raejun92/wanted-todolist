@@ -1,7 +1,7 @@
-import apiClient from '@/shared/lib/axios';
 import { redirect } from 'react-router';
+import updateTodoByIdApi from './updateTodoById.api';
 
-export default async function TodoUpdateAction({
+export default async function todoUpdateAction({
   request,
 }: {
   request: Request;
@@ -13,13 +13,11 @@ export default async function TodoUpdateAction({
   const createdAt = formData.get('createdAt') as string;
   const updatedAt = formData.get('updatedAt') as string;
 
-  await apiClient.put(`/todos/${id}`, {
-    title,
-    content,
-    id,
-    createdAt,
-    updatedAt,
-  });
+  try {
+    await updateTodoByIdApi(id, title, content, createdAt, updatedAt);
+  } catch {
+    return { error: 'Failed to load todos' };
+  }
 
   return redirect('/todo');
 }

@@ -1,7 +1,7 @@
 import { TodoSchema } from '@/entities/todo/model';
 import { useLoaderData } from 'react-router';
-import { TodoCreateLink } from '../create';
-import { TodoLinks, TodoListTitle } from './TodoList.ui';
+import { TodoCreateLink } from '../create/ui';
+import { TodoLinks, TodoListTitle } from './ui';
 
 export default function TodoList() {
   const todos = useLoaderData() as TodoSchema[];

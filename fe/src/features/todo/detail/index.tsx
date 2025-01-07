@@ -8,17 +8,19 @@ export default function TodoDetail() {
 
   return (
     <div className="max-w-2xl mx-auto mt-10 p-6 bg-gray-50 rounded-lg shadow">
-      <h1 className="text-2xl font-semibold mb-6 text-gray-800">Todo detail</h1>
+      <h1 className="text-2xl font-semibold mb-6 text-gray-800">Todo Detail</h1>
 
       <div className="space-y-6">
         <div>
           <Label className="text-sm font-medium">Title</Label>
           <p>{todo.title}</p>
         </div>
+
         <div>
           <Label className="text-sm font-medium">Content</Label>
           <p>{todo.content}</p>
         </div>
+
         <Form method="get" action={`/todo/update/${todo.id}`}>
           <Button
             type="submit"
@@ -27,6 +29,7 @@ export default function TodoDetail() {
             update
           </Button>
         </Form>
+
         <Form method="delete" action={`/todo/${todo.id}/delete`}>
           <Button
             type="submit"

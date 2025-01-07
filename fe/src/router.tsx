@@ -4,13 +4,13 @@ import signinLoader from './features/auth/signin/loader';
 import signupAction from './features/auth/signup/action';
 import signupLoader from './features/auth/signup/loader';
 import TodoCreate from './features/todo/create';
-import todoCreateAction from './features/todo/create/TodoCreate.action';
-import TodoDeleteAction from './features/todo/delete/TodoDelete.action';
+import todoCreateAction from './features/todo/create/action';
+import todoDeleteAction from './features/todo/delete/action';
 import TodoDetail from './features/todo/detail';
-import todoDetailLoader from './features/todo/detail/TodoDetail.loader';
-import { todoListLoader } from './features/todo/list/TodoList.loader';
+import todoDetailLoader from './features/todo/detail/loader';
+import { todoListLoader } from './features/todo/list/loader';
 import TodoUpdate from './features/todo/update';
-import TodoUpdateAction from './features/todo/update/TodoUpdate.action';
+import todoUpdateAction from './features/todo/update/action';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import Todo from './pages/Todo';
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: 'delete',
-            action: TodoDeleteAction,
+            action: todoDeleteAction,
           },
         ],
       },
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
         path: 'update/:id',
         loader: todoDetailLoader,
         Component: TodoUpdate,
-        action: TodoUpdateAction,
+        action: todoUpdateAction,
       },
     ],
   },

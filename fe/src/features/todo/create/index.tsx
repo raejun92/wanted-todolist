@@ -2,7 +2,7 @@ import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label';
 import { Textarea } from '@/shared/components/ui/textarea';
-import { Form, Link } from 'react-router';
+import { Form } from 'react-router';
 
 export default function TodoCreate() {
   return (
@@ -42,19 +42,6 @@ export default function TodoCreate() {
           Create
         </Button>
       </Form>
-    </div>
-  );
-}
-
-export function TodoCreateLink() {
-  return (
-    <div className="flex justify-end mb-4">
-      <Link
-        to="/todo/create"
-        className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
-      >
-        + Create New Todo
-      </Link>
     </div>
   );
 }

@@ -1,5 +1,5 @@
-import apiClient from '@/shared/lib/axios';
 import { redirect } from 'react-router';
+import createTodoApi from './createTodo.api';
 
 export default async function todoCreateAction({
   request,
@@ -10,7 +10,11 @@ export default async function todoCreateAction({
   const title = formData.get('title') as string;
   const content = formData.get('content') as string;
 
-  await apiClient.post('/todos', { title, content });
+  try {
+    await createTodoApi(title, content);
+  } catch {
+    return { error: 'create failed' };
+  }
 
   return redirect('/todo');
 }

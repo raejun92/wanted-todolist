@@ -1,17 +1,17 @@
 import { createBrowserRouter, redirect } from 'react-router';
-import { authProvider } from './auth';
-import todoCreateAction from './features/todo/create/TodoCreate.action';
+import { authService } from './entities/auth/auth.model';
 import TodoCreate from './features/todo/create';
-import todoDetailLoader from './features/todo/detail/TodoDetail.loader';
+import todoCreateAction from './features/todo/create/TodoCreate.action';
+import TodoDeleteAction from './features/todo/delete/TodoDelete.action';
 import TodoDetail from './features/todo/detail';
+import todoDetailLoader from './features/todo/detail/TodoDetail.loader';
 import { todoListLoader } from './features/todo/list/TodoList.loader';
+import TodoUpdate from './features/todo/update';
+import TodoUpdateAction from './features/todo/update/TodoUpdate.action';
 import Signin from './pages/Signin';
 import Signup from './pages/Signup';
 import Todo from './pages/Todo';
 import apiClient from './shared/lib/axios';
-import TodoDeleteAction from './features/todo/delete/TodoDelete.action';
-import TodoUpdate from './features/todo/update';
-import TodoUpdateAction from './features/todo/update/TodoUpdate.action';
 
 const router = createBrowserRouter([
   {
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
 export default router;
 
 function authLoader() {
-  if (authProvider.isAuthenticated) {
+  if (authService.isAuthenticated) {
     return redirect('/todo');
   }
 
@@ -88,7 +88,7 @@ async function signinAction({ request }: { request: Request }) {
     const { token } = response.data;
 
     // 로그인 성공: 토큰 저장 및 리다이렉트
-    authProvider.signin(token);
+    authService.signin(token);
 
     return redirect('/todo');
   } catch {

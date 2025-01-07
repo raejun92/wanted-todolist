@@ -1,9 +1,9 @@
-import { authProvider } from '@/auth';
+import { authService } from '@/entities/auth/auth.model';
 import apiClient from '@/shared/lib/axios';
 import { redirect } from 'react-router';
 
 export async function todoListLoader() {
-  if (!authProvider.isAuthenticated) {
+  if (!authService.isAuthenticated) {
     return redirect('/');
   }
 

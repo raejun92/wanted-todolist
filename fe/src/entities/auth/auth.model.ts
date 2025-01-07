@@ -1,10 +1,10 @@
-interface AuthProvider {
+interface AuthSchema {
   isAuthenticated: boolean;
   signin(token: string): void;
   signout(): void;
 }
 
-export const authProvider: AuthProvider = {
+export const authService: AuthSchema = {
   get isAuthenticated() {
     return !!localStorage.getItem('authToken');
   },

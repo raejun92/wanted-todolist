@@ -1,4 +1,4 @@
-import { TodoSchema } from '@/entities/todo/todo.schema';
+import { TodoSchema } from '@/entities/todo/todo.model';
 import { useLoaderData } from 'react-router';
 import { TodoCreateLink } from '../create';
 import { TodoLinks, TodoListTitle } from './TodoList.ui';

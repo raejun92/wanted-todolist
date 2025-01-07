@@ -1,4 +1,4 @@
-import { TodoSchema } from '@/entities/todo/todo.schema';
+import { TodoSchema } from '@/entities/todo/todo.model';
 import { Button } from '@/shared/components/ui/button';
 import { Label } from '@/shared/components/ui/label';
 import { Form, useLoaderData } from 'react-router';

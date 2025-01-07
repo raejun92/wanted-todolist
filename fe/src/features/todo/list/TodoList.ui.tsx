@@ -1,4 +1,4 @@
-import { TodoSchema } from '@/entities/todo/todo.schema';
+import { TodoSchema } from '@/entities/todo/todo.model';
 import { Link } from 'react-router';
 
 export function TodoListTitle() {

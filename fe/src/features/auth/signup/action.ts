@@ -1,5 +1,6 @@
 import { redirect } from 'react-router';
 import signupUserApi from './signupUser.api';
+import { authService } from '@/entities/auth/model';
 
 export default async function signupAction({ request }: { request: Request }) {
   const formData = await request.formData();
@@ -9,7 +10,7 @@ export default async function signupAction({ request }: { request: Request }) {
   try {
     const token = await signupUserApi(email, password);
 
-    localStorage.setItem('authToken', token);
+    authService.signin(token);
 
     return redirect('/todo');
   } catch {

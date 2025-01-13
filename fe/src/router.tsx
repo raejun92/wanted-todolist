@@ -11,9 +11,9 @@ import todoDetailLoader from './features/todo/detail/loader';
 import { todoListLoader } from './features/todo/list/loader';
 import TodoUpdate from './features/todo/update';
 import todoUpdateAction from './features/todo/update/action';
-import Signin from './pages/Signin';
-import Signup from './pages/Signup';
-import Todo from './pages/Todo';
+import SigninPage from './pages/Signin';
+import SignupPage from './pages/Signup';
+import TodoPage from './pages/Todo';
 
 const router = createBrowserRouter([
   {
@@ -23,13 +23,13 @@ const router = createBrowserRouter([
       {
         index: true,
         loader: signinLoader,
-        Component: Signin,
+        Component: SigninPage,
         action: signinAction,
       },
       {
         path: 'signup',
         loader: signupLoader,
-        Component: Signup,
+        Component: SignupPage,
         action: signupAction,
       },
     ],
@@ -37,7 +37,7 @@ const router = createBrowserRouter([
   {
     path: '/todo',
     loader: todoListLoader,
-    Component: Todo,
+    Component: TodoPage,
     children: [
       {
         path: 'create',

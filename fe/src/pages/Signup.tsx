@@ -2,9 +2,10 @@ import { Button } from '@/shared/components/ui/button';
 import { Input } from '@/shared/components/ui/input';
 import { Label } from '@/shared/components/ui/label';
 import { useState } from 'react';
-import { Form, useActionData } from 'react-router';
+import { Form, useActionData, useNavigate } from 'react-router';
 
 export default function Signup() {
+  const navigate = useNavigate();
   const actionData = useActionData() as { error?: string };
 
   const [email, setEmail] = useState('');
@@ -31,6 +32,10 @@ export default function Signup() {
     confirmPassword: string
   ) => {
     setIsPasswordMatch(password === confirmPassword);
+  };
+
+  const moveToLogin = () => {
+    navigate('/');
   };
 
   return (
@@ -116,6 +121,10 @@ export default function Signup() {
           className="w-full"
         >
           Sign Up
+        </Button>
+
+        <Button className="w-full" onClick={moveToLogin}>
+          Sign In
         </Button>
       </Form>
 

@@ -1,9 +1,9 @@
 import { useMutation } from '@tanstack/react-query';
-import signinUserApi from './signinUser.api';
+import signupUserApi from './signupUser.api';
 
-export const useSigninMutation = () => {
+export const useSignupMutation = () => {
   return useMutation({
     mutationFn: ({ email, password }: { email: string; password: string }) =>
-      signinUserApi(email, password),
+      signupUserApi(email, password),
   });
 };

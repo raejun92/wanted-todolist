@@ -4,7 +4,7 @@ import { Label } from '@/shared/components/ui/label';
 import { useState } from 'react';
 import { Form, useActionData, useNavigate } from 'react-router';
 
-export default function Signup() {
+export default function SignupPage() {
   const navigate = useNavigate();
   const actionData = useActionData() as { error?: string };
 

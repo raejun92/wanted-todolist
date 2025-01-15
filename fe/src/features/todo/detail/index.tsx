@@ -1,16 +1,16 @@
 import { TodoSchema } from '@/entities/todo/model';
-import { Button } from '@/shared/components/ui/button';
 import { Label } from '@/shared/components/ui/label';
-import { useLoaderData } from 'react-router';
-import TodoDeleteButton from '../delete/ui';
 import { useQuery } from '@tanstack/react-query';
+import { useLoaderData } from 'react-router';
+import { TodoDeleteButton } from '../delete/ui';
+import { TodoUpdateButton } from '../update/ui';
 import getTodoByIdApi from './getTodoById.api';
 
 export default function TodoDetail() {
   const todo = useLoaderData() as TodoSchema;
 
   const { data: todoData } = useQuery({
-    queryKey: ['todo', todo.id],
+    queryKey: ['todos', todo.id],
     queryFn: () => getTodoByIdApi(todo.id),
     initialData: todo,
     staleTime: Infinity,
@@ -31,14 +31,7 @@ export default function TodoDetail() {
           <p>{todoData.content}</p>
         </div>
 
-        <form method="get" action={`/todo/update/${todoData.id}`}>
-          <Button
-            type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-600 text-white"
-          >
-            update
-          </Button>
-        </form>
+        <TodoUpdateButton id={todoData.id} />
 
         <TodoDeleteButton id={todoData.id} />
       </div>

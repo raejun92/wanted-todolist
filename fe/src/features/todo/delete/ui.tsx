@@ -4,7 +4,7 @@ import { FormEvent } from 'react';
 import { useNavigate } from 'react-router';
 import { queryClient } from '@/shared/lib/query';
 
-export default function TodoDeleteButton({ id }: { id: string }) {
+export function TodoDeleteButton({ id }: { id: string }) {
   const navigate = useNavigate();
   const deleteTodoMutation = useDeleteTodoMutation();
 

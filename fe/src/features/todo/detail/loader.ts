@@ -8,7 +8,7 @@ export default async function todoDetailLoader({
 }) {
   try {
     const data = await queryClient.ensureQueryData({
-      queryKey: ['todo', params.id],
+      queryKey: ['todos', params.id],
       queryFn: () => getTodoByIdApi(params.id),
     });
 

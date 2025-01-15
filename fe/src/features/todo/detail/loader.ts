@@ -1,3 +1,4 @@
+import { queryClient } from '@/shared/lib/query';
 import getTodoByIdApi from './getTodoById.api';
 
 export default async function todoDetailLoader({
@@ -6,7 +7,10 @@ export default async function todoDetailLoader({
   params: { id?: string };
 }) {
   try {
-    const data = await getTodoByIdApi(params.id);
+    const data = await queryClient.ensureQueryData({
+      queryKey: ['todo', params.id],
+      queryFn: () => getTodoByIdApi(params.id),
+    });
 
     return data;
   } catch {

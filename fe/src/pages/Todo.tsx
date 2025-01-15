@@ -2,7 +2,7 @@ import TodoList from '@/features/todo/list';
 import Header from '@/widget/header';
 import { Outlet } from 'react-router';
 
-export default function Todo() {
+export default function TodoPage() {
   return (
     <>
       <Header />

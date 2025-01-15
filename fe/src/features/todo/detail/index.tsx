@@ -1,7 +1,8 @@
 import { TodoSchema } from '@/entities/todo/model';
 import { Button } from '@/shared/components/ui/button';
 import { Label } from '@/shared/components/ui/label';
-import { Form, useLoaderData } from 'react-router';
+import { useLoaderData } from 'react-router';
+import TodoDeleteButton from '../delete/ui';
 
 export default function TodoDetail() {
   const todo = useLoaderData() as TodoSchema;
@@ -21,23 +22,16 @@ export default function TodoDetail() {
           <p>{todo.content}</p>
         </div>
 
-        <Form method="get" action={`/todo/update/${todo.id}`}>
+        <form method="get" action={`/todo/update/${todo.id}`}>
           <Button
             type="submit"
             className="w-full bg-blue-500 hover:bg-blue-600 text-white"
           >
             update
           </Button>
-        </Form>
+        </form>
 
-        <Form method="delete" action={`/todo/${todo.id}/delete`}>
-          <Button
-            type="submit"
-            className="w-full bg-red-500 hover:bg-red-600 text-white"
-          >
-            delete
-          </Button>
-        </Form>
+        <TodoDeleteButton id={todo.id} />
       </div>
     </div>
   );
